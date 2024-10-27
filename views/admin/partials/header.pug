@@ -1,0 +1,19 @@
+header.header
+  .container
+    .row
+      .col-md-3.col-6
+        .inner-logo
+          a(href=`${prefixAdmin}/dashboard`) Logo 
+      .col-md-9.col-6.d-flex.justify-content-end.align-items-center
+        a(
+          href=`${prefixAdmin}/my-account`
+          class="btn btn-primary me-3"
+        ) Account
+        form(
+          action=`${prefixAdmin}/auth/logout`
+        )
+          button(
+            type="submit"
+            class="btn btn-danger"
+          ) Logout
+        

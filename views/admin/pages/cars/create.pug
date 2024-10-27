@@ -1,0 +1,114 @@
+extends ../../layouts/default.pug
+
+include ../../mixins/box-alert.pug
+include ../../mixins/box-head.pug
+
+block main
+  +box-alert-success(messages)
+  +box-alert-error(messages)
+
+  +box-head(pageTitle)
+
+  form(
+    action=`${prefixAdmin}/cars/create`
+    method="POST"
+  )
+    .form-group.mb-4
+      label(
+        class="mb-2 fw-bold"
+        for="name"
+      ) Name
+      input(
+        class="form-control"
+        id="name"
+        name="name"
+        required
+      )
+    
+    .form-group.mb-4
+      label(
+        class="mb-2 fw-bold"
+        for="base-price"
+      ) Base price
+      input(
+        type="number"
+        min="0"
+        value="0"
+        class="form-control"
+        id="base-price"
+        name="base-price"
+        required
+      )
+    
+    .form-group.mb-4
+      label(
+        class="mb-2 fw-bold"
+        for="engine"
+      ) Engine
+      select(
+        class="form-select"
+        id="engine"
+        name="engine"
+        required
+      )
+        if (engines)
+          each item in engines
+            option(
+              value=item.ID
+            ) #{item.NAME}
+    
+    .form-group.mb-4
+      label(
+        class="mb-2 fw-bold"
+        for="segment"
+      ) Segment
+      select(
+        class="form-select"
+        id="segment"
+        name="segment"
+        required
+      )
+        if (segments)
+          each item in segments
+            option(
+              value=item.ID
+            ) #{item.NAME}
+    
+    .form-group.mb-4
+      label(
+        class="mb-2 fw-bold"
+        for="version"
+      ) Versions
+      select(
+        class="form-select"
+        id="version"
+        name="version"
+        required
+      )
+        if (versions)
+          each item in versions
+            option(
+              value=item.ID
+            ) #{item.NAME}
+    
+    .form-group.mb-4
+      label(
+        class="mb-2 fw-bold"
+        for="company"
+      ) Company
+      select(
+        class="form-select"
+        id="company"
+        name="company"
+        required
+      )
+        if (companies)
+          each item in companies
+            option(
+              value=item.ID
+            ) #{item.NAME}
+      
+    .d-flex.justify-content-center.mt-5
+      button(
+        class="btn btn-success fw-bold"
+      ) Create

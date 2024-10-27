@@ -1,0 +1,10 @@
+extends ../../layouts/default.pug
+
+include ../../mixins/box-alert.pug
+include ../../mixins/box-head.pug
+
+block main
+  +box-alert-success(messages)
+  +box-alert-error(messages)
+
+  +box-head(pageTitle)

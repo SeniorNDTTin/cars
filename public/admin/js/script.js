@@ -13,3 +13,23 @@ if (boxAlert) {
   });
 }
 // End Alert
+
+// Delete Car
+const formDeleteCar = document.querySelector("[form-delete-car]");
+if (formDeleteCar) {
+  const action = formDeleteCar.action;
+
+  const buttonsDeleteCar = document.querySelectorAll("[button-delete-car]");
+  buttonsDeleteCar.forEach(item => {
+    const carId = item.getAttribute("data-car-id");
+
+    item.addEventListener("click", () => {
+      const isConfirm = confirm("Are your sure?");
+      if (isConfirm) {
+        formDeleteCar.action = action + `/${carId}?_method=DELETE`
+        formDeleteCar.submit();
+      }
+    });
+  });
+}
+// End Delete Car

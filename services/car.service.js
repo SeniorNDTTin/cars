@@ -69,6 +69,14 @@ module.exports.getCars = async () => {
   return cars;
 }
 
+module.exports.getCarById = async (id) => {
+  const car = await executeOracleService.executeOracle(`
+    SELECT * FROM cars
+    WHERE id = ${id}
+  `);
+  return car[0];
+}
+
 module.exports.createCar = async (
   name,
   basePrice,
@@ -90,5 +98,12 @@ module.exports.createCar = async (
       '${segmentId}', 
       '${engineId}'
     )
+  `);
+}
+
+module.exports.deleteCar = async (id) => {
+  await executeOracleService.executeOracle(`
+    DELETE FROM cars
+    WHERE id = ${id}
   `);
 }

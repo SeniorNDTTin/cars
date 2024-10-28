@@ -42,3 +42,15 @@ block main
               button(
                 class="btn btn-primary fw-bold"
               ) Detail
+
+              button(
+                class="btn btn-danger fw-bold mx-2"
+                data-car-id=item.ID
+                button-delete-car
+              ) Delete
+  
+  form(
+    action=`${prefixAdmin}/cars/delete`
+    method="POST"
+    form-delete-car
+  )

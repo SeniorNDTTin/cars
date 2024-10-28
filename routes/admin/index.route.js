@@ -5,6 +5,7 @@ const carRoutes = require("./car.route");
 const companyRoutes = require("./company.route");
 const engineRoutes = require("./engine.route");
 const segmentRoutes = require("./segment.route");
+const versionRoutes = require("./version.route");
 
 module.exports = (app) => {
   app.use(
@@ -30,5 +31,10 @@ module.exports = (app) => {
   app.use(
     `${prefixAdmin}/segments`,
     segmentRoutes
+  );
+
+  app.use(
+    `${prefixAdmin}/versions`,
+    versionRoutes
   );
 }

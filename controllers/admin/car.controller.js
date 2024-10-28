@@ -64,3 +64,23 @@ module.exports.createCar = async (req, res) => {
     res.redirect("back");
   }
 }
+
+module.exports.deleteCar = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const car = await carService.getCarById(id);
+    if (!car) {
+      req.flash("error", "Car Id not found.");
+      res.redirect("back");
+      return;
+    }
+
+    await carService.deleteCar(id);
+    req.flash("success", "Car was deleted successfully.");
+  } catch {
+    req.flash("error", "Something went wrong.");
+  }
+
+  res.redirect("back");
+}
